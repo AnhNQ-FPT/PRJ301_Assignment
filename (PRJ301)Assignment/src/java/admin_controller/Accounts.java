@@ -10,6 +10,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.User;
 
 /**
  *
@@ -28,6 +30,12 @@ public class Accounts extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("loggedUser");
+        if(u==null || !u.isAdmin()){
+            response.sendRedirect("../denied");
+            return;
+        }
         request.getRequestDispatcher("/admin/accounts.jsp").forward(request, response);
     }
 

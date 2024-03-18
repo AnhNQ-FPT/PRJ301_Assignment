@@ -56,6 +56,10 @@
         <servlet-name>ViewItem</servlet-name>
         <servlet-class>controller.ViewItem</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Denied</servlet-name>
+        <servlet-class>controller.Denied</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -111,5 +115,9 @@
     <servlet-mapping>
         <servlet-name>ViewItem</servlet-name>
         <url-pattern>/viewitem</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Denied</servlet-name>
+        <url-pattern>/denied</url-pattern>
     </servlet-mapping>
 </web-app>

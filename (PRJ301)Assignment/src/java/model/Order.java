@@ -19,6 +19,7 @@ public class Order {
     private String address;
     private LocalDateTime created;
     private List<OrderedFood> list;
+    private String status;
 
     public Order() {
     }

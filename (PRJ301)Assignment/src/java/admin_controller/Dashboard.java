@@ -12,6 +12,8 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.User;
 
 /**
  *
@@ -57,6 +59,12 @@ public class Dashboard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("loggedUser");
+        if(u==null || !u.isAdmin()){
+            response.sendRedirect("../denied");
+            return;
+        }
         FoodDAO fd = new FoodDAO();
         int sold = fd.getTotalSold();
         request.setAttribute("soldAdmin", sold);

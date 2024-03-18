@@ -85,8 +85,12 @@
                                         <button type="button" onclick="decreaseQuantity()" style="margin-right: 5px;">-</button>
                                         <input type="number" id="quantityInput" value="1" style="width: 50px;">
                                         <button type="button" onclick="increaseQuantity()" style="margin-left: 5px;">+</button>
-                                        &nbsp;<div class="col-12 d-flex justify-content-left"> <a class="btn btn-lg btn-primary" href="catalogue">Add To Cart</a></div>
+                                        &nbsp;<div class="col-12 d-flex justify-content-left"> <a class="btn btn-lg btn-primary <%=(User) (session.getAttribute("loggedUser"))==null ? "disabled":""%>" href="catalogue">Add To Cart</a></div>
+
                                     </div>
+                                    <c:if test="${sessionScope.loggedUser eq null}">
+                                        <div class="text-warning fw-bold fs-md--2 fs-lg--1 fs-xl-1">You must <a class="text-success" href="login">log in</a> first to use this feature.</div>    
+                                    </c:if>
                                 </div>
                             </div>
                         </div>

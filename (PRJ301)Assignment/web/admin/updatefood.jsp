@@ -4,6 +4,9 @@
 <%@page import="dal.*"%>
 <%@page import="java.util.*"%>
 <%@page import="java.time.*"%>
+<c:if test="${empty sessionScope.loggedUser || !sessionScope.loggedUser.admin}">
+    <c:redirect url="../denied" />
+</c:if>
 <!DOCTYPE html>
 <html>
     <head>

@@ -11,8 +11,10 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 import model.Food;
+import model.User;
 
 /**
  *
@@ -31,6 +33,12 @@ public class Foods extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("loggedUser");
+        if(u==null || !u.isAdmin()){
+            response.sendRedirect("../denied");
+            return;
+        }
         request.getRequestDispatcher("/admin/foods.jsp").forward(request, response);
     } 
 

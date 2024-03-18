@@ -23,6 +23,7 @@
     List<Food> lessPopular = fd.getLessPopular();
     List<Restaurant> featured = rd.getSixRating();
     List<Food> allFood = fd.getFoods();
+    Collections.shuffle(allFood);
     List<City> topCity = cd.getEightTop();
 %>
 <html lang="en-US" dir="ltr">
@@ -289,14 +290,14 @@
                         <div class="col-12">
                             <div class="carousel slide" id="carouselSearchByFood" data-bs-touch="false" data-bs-interval="false">
                                 <div class="carousel-inner">
-                                    <% for (int i = 0; i < allFood.size(); i++) {
+                                    <% for (int i = 0; i < allFood.size()/2; i++) {
                                     if (i % 6 == 0) { %>
                                     <div class="carousel-item <%= i == 0 ? "active" : "" %>" data-bs-interval="10000">
                                         <div class="row gx-3 h-100 align-items-center justify-content-start">
                                             <% }
                                                 Food x = allFood.get(i);
                                                 int emptyColumns = 0;
-                                                if(i==allFood.size()-1){emptyColumns = ((i + 1) % 6 == 0 ? 0 : 6 - ((i + 1) % 6));}
+                                                if(i==allFood.size()/2-1){emptyColumns = ((i + 1) % 6 == 0 ? 0 : 6 - ((i + 1) % 6));}
                                             %>
                                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100">
                                                 <div class="card card-span h-100 rounded-circle">
@@ -309,7 +310,7 @@
                                             <%for (int j = 0; j < emptyColumns; j++) { %>
                                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100"></div>
                                             <% }
-                                            if (i % 6 == 5 || i == allFood.size() - 1) { %>
+                                            if (i % 6 == 5 || i == allFood.size()/2 - 1) { %>
                                         </div>
                                     </div>
                                     <% }
