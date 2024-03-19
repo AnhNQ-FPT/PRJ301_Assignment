@@ -63,6 +63,7 @@
                             Name<input value="<%=u.getName()%>" name="uaname" type="text" class="form-control" required>
                             Password<input value="<%=u.getPassword()%>" name="uapass" type="text" class="form-control">
                             Email<input value="<%=u.getEmail()%>" name="uaemail" type="text" class="form-control">
+                            Balance<input value="<%=u.getBalance()%>" name="uabal" type="text" class="form-control">
                             Role
                                 <select name="uarole" class="form-select">
                                     <%boolean currentRole = u.isAdmin();%>

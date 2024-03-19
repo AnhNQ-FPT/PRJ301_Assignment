@@ -218,7 +218,7 @@
                                                         <span class="text-1000 fw-bold">$<%= String.format("%.2f", popular.get(i).getPrice()) %></span>
                                                     </div>
                                                 </div>
-                                                <div class="d-grid gap-2"><a class="btn btn-lg btn-danger" href="#!" role="button">Order now</a></div>
+                                                <div class="d-grid gap-2"><a class="btn btn-lg btn-danger" href="viewitem?viewid=<%=popular.get(i).getId()%>" role="button">Order now</a></div>
                                             </div>
                                             <%for (int j = 0; j < emptyColumns; j++) { %>
                                             <div class="col-sm-6 col-md-4 col-xl mb-5 h-100"></div>
@@ -243,7 +243,7 @@
             <!-- ============================================-->
 
 
-            <section id="testimonial">
+<!--            <section id="testimonial">
                 <div class="container">
                     <div class="row h-100">
                         <div class="col-lg-7 mx-auto text-center mb-6">
@@ -269,7 +269,7 @@
                         <div class="col-12 d-flex justify-content-center mt-5"> <a class="btn btn-lg btn-primary" href="catalogue">View All <i class="fas fa-chevron-right ms-2"> </i></a></div>
                     </div>
                 </div>
-            </section>
+            </section>-->
 
 
             <!-- ============================================-->
@@ -460,7 +460,7 @@
                 <!--/.bg-holder-->
                 <div class="container">
                     <div class="row flex-center">
-                        <div class="col-xxl-9 py-7 text-center">
+                        <div class="col-xxl-9 py-7 text-center d-">
                             <h1 class="fw-bold mb-4 text-white fs-6">Are you ready to order <br />with the best deals? </h1><a class="btn btn-danger" href="catalogue"> PROCEED TO ORDER<i class="fas fa-chevron-right ms-2"></i></a>
                         </div>
                     </div>

@@ -83,9 +83,17 @@ public class UpdateAccount extends HttpServlet {
                 request.getRequestDispatcher("accounts.jsp").forward(request, response);
                 return;
             }
+
+            double uabal = Double.parseDouble(request.getParameter("uabal"));
+            if (uabal < 0) {
+                request.setAttribute("aErr", "Invalid parameters");
+                request.getRequestDispatcher("accounts.jsp").forward(request, response);
+                return;
+            }
+            
             String uarole_raw = request.getParameter("uarole");
             boolean uarole = uarole_raw.equals("1");
-            User u = new User(uaid, uaname, uapass, uaemail, uarole, null);
+            User u = new User(uaid, uaname, uapass, uaemail, uabal, uarole, null);
             if (ud.checkExistingEmailExceptSelf(u)) {
                 request.setAttribute("aErr", "Email already exists");
                 request.getRequestDispatcher("accounts.jsp").forward(request, response);
@@ -97,6 +105,7 @@ public class UpdateAccount extends HttpServlet {
                 request.getRequestDispatcher("accounts.jsp").forward(request, response);
                 return;
             }
+
             ud.update(u);
             request.setAttribute("aSucc", "Updated succesfully!");
         } catch (Exception e) {

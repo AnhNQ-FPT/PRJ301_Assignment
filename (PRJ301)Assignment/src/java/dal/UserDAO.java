@@ -12,6 +12,7 @@ public class UserDAO extends MyDAO {
         String password;
         String email;
         boolean admin;
+        double balance;
         List<Order> orders;
         OrderDAO od = new OrderDAO();
         User x;
@@ -25,9 +26,10 @@ public class UserDAO extends MyDAO {
                 name = rs.getString("name");
                 password = rs.getString("password");
                 email = rs.getString("email");
+                balance = rs.getDouble("balance");
                 admin = rs.getBoolean("role");
                 orders = od.getOrders();
-                x = new User(id, name, password, email, admin, orders);
+                x = new User(id, name, password, email, balance, admin, orders);
                 t.add(x);
             }
             rs.close();
@@ -43,7 +45,8 @@ public class UserDAO extends MyDAO {
         String name;
         String password;
         String email;
-        boolean role;
+        double balance;
+        boolean admin;
         User x = null;
         String xSql = "select * from [User] where id = ?";
         try {
@@ -55,8 +58,9 @@ public class UserDAO extends MyDAO {
                 name = rs.getString("name");
                 password = rs.getString("password");
                 email = rs.getString("email");
-                role = rs.getBoolean("role");
-                x = new User(id, name, password, email, role,null);
+                balance = rs.getDouble("balance");
+                admin = rs.getBoolean("role");
+                x = new User(id, name, password, email, balance, admin, null);
             }
             rs.close();
             ps.close();
@@ -71,6 +75,7 @@ public class UserDAO extends MyDAO {
         String name;
         String password;
         String email;
+        double balance;
         boolean admin;
         List<Order> orders;
         OrderDAO od = new OrderDAO();
@@ -85,10 +90,11 @@ public class UserDAO extends MyDAO {
                 id = rs.getInt("id");
                 name = rs.getString("name");
                 password = rs.getString("password");
-                orders = od.getOrders();
                 email = rs.getString("email");
+                balance = rs.getDouble("balance");
                 admin = rs.getBoolean("role");
-                x = new User(id, name, password, email, admin, orders);
+                orders = od.getOrders();
+                x = new User(id, name, password, email, balance, admin, orders);
             }
             rs.close();
             ps.close();
@@ -103,6 +109,7 @@ public class UserDAO extends MyDAO {
         String name;
         String password;
         String email;
+        double balance;
         boolean admin;
         List<Order> orders;
         OrderDAO od = new OrderDAO();
@@ -116,10 +123,11 @@ public class UserDAO extends MyDAO {
                 id = rs.getInt("id");
                 name = rs.getString("name");
                 password = rs.getString("password");
-                orders = od.getOrders();
                 email = rs.getString("email");
+                balance = rs.getDouble("balance");
                 admin = rs.getBoolean("role");
-                x = new User(id, name, password, email, admin, orders);
+                orders = od.getOrders();
+                x = new User(id, name, password, email, balance, admin, orders);
             }
             rs.close();
             ps.close();
@@ -134,6 +142,7 @@ public class UserDAO extends MyDAO {
         String name;
         String password;
         String email;
+        double balance;
         boolean admin;
         User x = null;
         String xSql = "select * from [User] where name = ?";
@@ -146,8 +155,9 @@ public class UserDAO extends MyDAO {
                 name = rs.getString("name");
                 password = rs.getString("password");
                 email = rs.getString("email");
+                balance = rs.getDouble("balance");
                 admin = rs.getBoolean("role");
-                x = new User(id, name, password, email, admin, null);
+                x = new User(id, name, password, email, balance, admin, null);
             }
             rs.close();
             ps.close();
@@ -162,6 +172,7 @@ public class UserDAO extends MyDAO {
         String name;
         String password;
         String email;
+        double balance;
         boolean admin;
         User x = null;
         String xSql = "select * from [User] where email = ?";
@@ -174,8 +185,9 @@ public class UserDAO extends MyDAO {
                 name = rs.getString("name");
                 password = rs.getString("password");
                 email = rs.getString("email");
+                balance = rs.getDouble("balance");
                 admin = rs.getBoolean("role");
-                x = new User(id, name, password, email, admin, null);
+                x = new User(id, name, password, email, balance, admin, null);
             }
             rs.close();
             ps.close();
@@ -190,6 +202,7 @@ public class UserDAO extends MyDAO {
         String name;
         String password;
         String email;
+        double balance;
         boolean admin;
         List<Order> orders;
         OrderDAO od = new OrderDAO();
@@ -203,10 +216,11 @@ public class UserDAO extends MyDAO {
                 id = rs.getInt("id");
                 name = rs.getString("name");
                 password = rs.getString("password");
-                orders = od.getOrders();
                 email = rs.getString("email");
+                balance = rs.getDouble("balance");
                 admin = rs.getBoolean("role");
-                x = new User(id, name, password, email, admin, orders);
+                orders = od.getOrders();
+                x = new User(id, name, password, email, balance, admin, orders);
             }
             rs.close();
             ps.close();
@@ -293,6 +307,22 @@ public class UserDAO extends MyDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public double getBalance(int uid){
+        double balance = 0;
+        String sql = "select balance from [User] where id = ?";
+        try{
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1,uid);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                balance = rs.getDouble("balance");
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return balance;
     }
 
     public static void main(String[] args) {

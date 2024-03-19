@@ -10,17 +10,22 @@ package model;
  */
 public class OrderedFood extends Food {
 
-    private int restID;
+//    private int restID;
     private int quantity;
 
     public OrderedFood(int quantity) {
         this.quantity = quantity;
     }
+    
+    public OrderedFood(int id, int quantity) {
+        setId(id);
+        this.quantity = quantity;
+    }
 
-    public OrderedFood(int id, String name, double price, int sale, int sold, double cost, int quantity, int restID) {
+    public OrderedFood(int id, String name, double price, int sale, int sold, double cost, int quantity) {
         super(id, name, price, sale, sold, cost);
         this.quantity = quantity;
-        this.restID = restID;
+//        this.restID = restID;
     }
 
     public int getQuantity() {

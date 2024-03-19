@@ -14,6 +14,25 @@
     HttpSession s = request.getSession();
     String delivery = request.getParameter("inputDelivery");
     if(delivery != null && !delivery.equals((String)s.getAttribute("delivery"))) s.setAttribute("delivery",delivery);
+    
+    User u = (User) s.getAttribute("loggedUser");
+    if(u!=null){
+        FoodDAO fd = new FoodDAO();
+        List<Food> list = fd.getFoods();
+        Cookie[] arr = request.getCookies();
+        String cartinfo = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("cartinfo" + u.getId())) {
+                    cartinfo += o.getValue();
+                }
+            }
+        }
+        Order o = new Order(cartinfo, list);
+        
+        session.setAttribute("cartsize", o.getSize(cartinfo));
+        session.setAttribute("totalcart", o.getFinalTotal());
+    }
 %>
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" data-navbar-on-scroll="data-navbar-on-scroll">
     <div class="container"><a class="navbar-brand d-inline-flex" href="index.jsp"><img class="d-inline-block" src="public/assets/img/gallery/logo.svg" alt="logo" /><span class="text-1000 fs-3 fw-bold ms-2 text-gradient">foodwaGon</span></a>
@@ -59,8 +78,10 @@
                             Hello, ${sessionScope.loggedUser.name}
                         </button>
                         <ul class="dropdown-menu usermenu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">View Cart</a></li>
-                            <li><a class="dropdown-item" href="#">Orders History</a></li>
+                            <li><a class="dropdown-item" href="topup">Balance: $${sessionScope.loggedUser.balance}</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="viewcart">View Cart (${sessionScope.cartsize})</a></li>
+                            <li><a class="dropdown-item" href="history">Orders History</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="<%= request.getContextPath() %>/logout">Logout</a></li>
                         </ul>

@@ -2,9 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller;
+package model;
 
 import dal.*;
+import model.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -14,13 +15,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
-import model.*;
 
 /**
  *
  * @author ADMIN
  */
-public class Login extends HttpServlet {
+public class AddToCart extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class Login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");
+            out.println("<title>Servlet AddToCart</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddToCart at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +60,46 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("login.jsp");
+        HttpSession session = request.getSession();
+        int userid = ((User) session.getAttribute("loggedUser")).getId();
+        int atcid = Integer.parseInt(request.getParameter("atcid"));
+        int quant = Integer.parseInt(request.getParameter("quant"));
+        
+        FoodDAO fd = new FoodDAO();
+        List<Food> list = fd.getFoods();
+        Cookie[] arr = request.getCookies();
+        String cartinfo = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("cartinfo" + userid)) {
+                    cartinfo += o.getValue();
+                    o.setMaxAge(0);
+                    response.addCookie(o);
+                }
+            }
+        }
+        Order o = new Order(cartinfo, list);
+
+        Food f = fd.getFood(atcid);
+        OrderedFood t = new OrderedFood(atcid,f.getName(),f.getPrice(),f.getSale(),f.getSold(),f.getCost(), quant);
+        o.addOrderedFood(t);
+
+        List<OrderedFood> foods = o.getList();
+        cartinfo = "";
+        if (foods.size() > 0) {
+            cartinfo = userid + ":" + foods.get(0).getId() + "-" + foods.get(0).getQuantity();
+            for (int i = 1; i < foods.size(); i++) {
+                cartinfo += "/" + foods.get(i).getId() + "-" + foods.get(i).getQuantity();
+            }
+        }
+        
+
+        Cookie c = new Cookie("cartinfo" + userid, cartinfo);
+        c.setMaxAge(2 * 24 * 60 * 60);
+        response.addCookie(c);
+        request.setAttribute("atcsucc", "Added " + quant + " item(s) to cart.");
+//        response.sendRedirect("viewitem?viewid=" + atcid);
+        request.getRequestDispatcher("viewitem?viewid=" + atcid).forward(request, response);
     }
 
     /**
@@ -74,34 +113,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
-        String remember = request.getParameter("remember");
-        Cookie ce = new Cookie("ce", email);
-        Cookie cp = new Cookie("cp", pass);
-        Cookie cr = new Cookie("cr", remember);
-        if (remember != null) {//remember me is selected
-            ce.setMaxAge(Integer.MAX_VALUE); //any max age
-            cp.setMaxAge(Integer.MAX_VALUE);
-            cr.setMaxAge(Integer.MAX_VALUE);
-        } else {
-            ce.setMaxAge(0); //instant discard
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
-        response.addCookie(ce);
-        response.addCookie(cp);
-        response.addCookie(cr);
-        UserDAO ud = new UserDAO();
-        User u = ud.getUserByEmailAndPassword(email, pass);
-        if (u != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("loggedUser", u);
-            response.sendRedirect("index.jsp");
-        } else {
-            request.setAttribute("error", "Incorrect email or password!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**

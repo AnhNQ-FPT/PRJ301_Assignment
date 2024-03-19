@@ -97,7 +97,7 @@ public class Register extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
         int newid = ud.getLatestId()+1;
-        User u = new User(newid, newname, newpass, newemail, false, null);
+        User u = new User(newid, newname, newpass, newemail, 0, false, null);
         ud.insert(u);
         request.setAttribute("regsuccess", "Account registered successfully!");
         request.getRequestDispatcher("login.jsp").forward(request, response);

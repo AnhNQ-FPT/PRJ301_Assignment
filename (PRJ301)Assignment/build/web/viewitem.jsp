@@ -23,6 +23,7 @@
     List<Food> lessPopular = fd.getLessPopular();
     List<Restaurant> featured = rd.getSixRating();
     List<Food> allFood = fd.getFoods();
+    Collections.shuffle(allFood);
     List<City> topCity = cd.getEightTop();
 %>
 <html>
@@ -83,10 +84,10 @@
                                 <div class="mt-5" style="position: relative; bottom: 0; left: 0;">
                                     <div style="display: flex; align-items: center;">
                                         <button type="button" onclick="decreaseQuantity()" style="margin-right: 5px;">-</button>
-                                        <input type="number" id="quantityInput" value="1" style="width: 50px;">
+                                        <input type="number" id="quantityInput" name="quantityInput" value="1" style="width: 50px;">
                                         <button type="button" onclick="increaseQuantity()" style="margin-left: 5px;">+</button>
-                                        &nbsp;<div class="col-12 d-flex justify-content-left"> <a class="btn btn-lg btn-primary <%=(User) (session.getAttribute("loggedUser"))==null ? "disabled":""%>" href="catalogue">Add To Cart</a></div>
-
+                                        &nbsp;<div class="col-12 d-flex justify-content-left"> <a onclick="appendValueToLink()" id="addtocart" class="btn btn-lg btn-primary <%=(User) (session.getAttribute("loggedUser"))==null ? "disabled":""%>" href="addtocart?atcid=<%=f.getId()%>&quant=${param.quantityInput}">Add To Cart</a></div>
+                                        <input type="hidden" id="atcsucc" value="${atcsucc}">
                                     </div>
                                     <c:if test="${sessionScope.loggedUser eq null}">
                                         <div class="text-warning fw-bold fs-md--2 fs-lg--1 fs-xl-1">You must <a class="text-success" href="login">log in</a> first to use this feature.</div>    
@@ -112,8 +113,9 @@
                                 <a class="stretched-link" href="viewitem?viewid=<%=x.getId()%>"></a>
                             </div>
                         </div>
-                        <% counter++; %>
-                        <% } %>
+                        <% counter++; 
+                        if(counter>=6) break;
+                        } %>
                         <button type="button" class="btn btn-primary mt-3 expand-button"><a href="catalogue" class="text-light">View All</a></button>
                     </div>
                 </div><!-- end of .container-->
@@ -135,13 +137,23 @@
                     input.value = parseInt(input.value) - 1;
                 }
             }
-
-            function addToCart() {
-                var quantity = document.getElementById('quantityInput').value;
-                // Add your logic to add the item to the cart with the specified quantity
-                console.log("Added " + quantity + " items to cart.");
+        </script>
+        <script>
+            function appendValueToLink() {
+                var quant = document.getElementById("quantityInput").value;
+                var addtocart = document.getElementById("addtocart");
+                var url = addtocart.getAttribute("href");
+                url += encodeURIComponent(quant);
+                addtocart.setAttribute("href", url);
             }
         </script>
+        <script>
+            var message = document.getElementById('atcsucc').value;
+            if (message.trim() !== "") {
+                alert(message);
+            }
+        </script>
+
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&amp;display=swap" rel="stylesheet">
     </body>
 </html>

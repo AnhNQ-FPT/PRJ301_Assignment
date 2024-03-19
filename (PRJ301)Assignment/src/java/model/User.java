@@ -16,17 +16,19 @@ public class User {
     private String name;
     private String password;
     private String email;
+    private double balance;
     private boolean admin;
     private List<Order> orders;
 
     public User() {
     }
 
-    public User(int id, String name, String password, String email, boolean admin, List<Order> orders) {
+    public User(int id, String name, String password, String email, double balance, boolean admin, List<Order> orders) {
         this.id = id;
         this.name = name;
         this.password = password;
         this.email = email;
+        this.balance = balance;
         this.admin = admin;
         this.orders = orders;
     }
@@ -86,4 +88,13 @@ public class User {
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+
 }

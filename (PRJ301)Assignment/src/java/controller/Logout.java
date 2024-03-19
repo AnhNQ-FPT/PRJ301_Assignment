@@ -58,6 +58,8 @@ public class Logout extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.setAttribute("loggedUser", null);
+        session.setAttribute("cartsize", null);
+        session.setAttribute("totalcart", null);
         response.sendRedirect("index.jsp");
     }
 

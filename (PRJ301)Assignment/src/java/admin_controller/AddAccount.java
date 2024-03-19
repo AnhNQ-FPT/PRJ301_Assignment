@@ -96,10 +96,17 @@ public class AddAccount extends HttpServlet {
                 return;
             }
 
+            double abal = Double.parseDouble(request.getParameter("abal"));
+            if (abal < 0) {
+                request.setAttribute("aErr", "Invalid parameters");
+                request.getRequestDispatcher("accounts.jsp").forward(request, response);
+                return;
+            }
+
             String arole_raw = request.getParameter("arole");
             boolean arole = arole_raw.equals("1");
 
-            User u = new User(aid, aname, apass, aemail, arole, null);
+            User u = new User(aid, aname, apass, aemail, abal, arole, null);
             ud.insert(u);
             request.setAttribute("aSucc", "Added successfully!");
         } catch (Exception e) {

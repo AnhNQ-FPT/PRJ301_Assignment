@@ -13,7 +13,7 @@ public class OrderedFoodDAO extends MyDAO {
         int sale;
         int sold;
         double cost;
-        int restID;
+//        int restID;
         int quantity;
         OrderedFood x;
         List<OrderedFood> t = new ArrayList<>();
@@ -30,8 +30,8 @@ public class OrderedFoodDAO extends MyDAO {
                 sold = rs.getInt("sold");
                 cost = rs.getDouble("cost");
                 quantity = rs.getInt("quantity");
-                restID = rs.getInt("restID");
-                x = new OrderedFood(id, name, price, sale, sold, cost, quantity, restID);
+//                restID = rs.getInt("restID");
+                x = new OrderedFood(id, name, price, sale, sold, cost, quantity);
                 t.add(x);
             }
             rs.close();
@@ -40,6 +40,40 @@ public class OrderedFoodDAO extends MyDAO {
             e.printStackTrace();
         }
         return t;
+    }
+
+    public OrderedFood getOrderedFood(int fid) {
+        int id;
+        String name;
+        double price;
+        int sale;
+        int sold;
+        double cost;
+//        int restID;
+        int quantity;
+        OrderedFood x = null;
+        String xSql = "select * from OrderDetails where id = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(xSql);
+            ps.setInt(1, fid);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                id = rs.getInt("id");
+                name = rs.getString("name");
+                price = rs.getDouble("price");
+                sale = rs.getInt("sale");
+                sold = rs.getInt("sold");
+                cost = rs.getDouble("cost");
+                quantity = rs.getInt("quantity");
+//                restID = rs.getInt("restID");
+                x = new OrderedFood(id, name, price, sale, sold, cost, quantity);
+            }
+            rs.close();
+            ps.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return x;
     }
 
 //    public Food getFood(String xId) {
@@ -69,5 +103,4 @@ public class OrderedFoodDAO extends MyDAO {
 //        }
 //        return x;
 //    }
-
 }

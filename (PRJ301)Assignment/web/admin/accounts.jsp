@@ -75,6 +75,7 @@
                                             <th>Name</th>
                                             <th>Password</th>
                                             <th>Email</th>
+                                            <th>Balance</th>
                                             <th>Role</th>
                                             <th>Actions</th>
                                         </tr>
@@ -88,6 +89,7 @@
                                                 <td style="white-space: normal;"><%=x.getName()%></td>
                                                 <td><%=x.getPassword()%></td>
                                                 <td><%=x.getEmail()%></td>
+                                                <td>$<%=x.getBalance()%></td>
                                                 <td><%=x.isAdmin() ? "Admin":"Customer"%></td>
                                                 <td>
                                                     <a href="updateaccount?aid=<%=x.getId()%>"><button type="button" class="btn btn-warning">Update</button></a>
@@ -117,6 +119,7 @@
                             <p>Name<input name="aname" type="text" class="form-control" required>
                             <p>Password<input name="apass" type="text" class="form-control" required>
                             <p>Email<input name="aemail" type="text" class="form-control" required>
+                            <p>Balance<input name="abal" type="text" class="form-control" required>
                             <p>Role
                                 <select name="arole" class="form-select">
                                         <option value="1">Admin</option>

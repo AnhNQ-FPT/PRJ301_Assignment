@@ -117,11 +117,11 @@
                     </div>
 
 
-                    <div class="row h-100 gx-2 mt-7">
+<!--                    <div class="row h-100 gx-2 mt-7">
                         <h1 class="display-1 fs-md-5 fs-lg-6 fs-xl-8 text-dark">Restaurants</h1>
                         <%counter = 0;
                         for(Restaurant x:allRest){%>
-                        <div class="food-item col-sm-6 col-lg-2 mb-3 mb-md-0 h-100 pb-2 <% if(counter >= 6) { %>d-none<% } %>">
+                        <div class="food-item col-sm-2 col-lg-2 mb-3 mb-md-0 h-100 pb-2 <% if(counter >= 6) { %>d-none<% } %>">
                             <div class="card card-span h-100">
                                 <div class="position-relative"> <img class="img-fluid rounded-3 w-100" src="public/assets/img/gallery/food-world.png" alt="..." />
                                 </div>
@@ -134,7 +134,7 @@
                         <%counter++;
                             }%>
                         <button type="button" class="btn btn-primary mt-3 expand-button">Expand</button>
-                    </div>
+                    </div>-->
                 </div><!-- end of .container-->
             </section>
 

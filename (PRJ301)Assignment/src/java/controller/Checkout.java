@@ -20,7 +20,7 @@ import model.*;
  *
  * @author ADMIN
  */
-public class Login extends HttpServlet {
+public class Checkout extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +39,10 @@ public class Login extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Login</title>");
+            out.println("<title>Servlet Checkout</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Login at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Checkout at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +60,7 @@ public class Login extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.sendRedirect("login.jsp");
+        request.getRequestDispatcher("checkout.jsp").forward(request, response);
     }
 
     /**
@@ -74,33 +74,37 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String email = request.getParameter("email");
-        String pass = request.getParameter("pass");
-        String remember = request.getParameter("remember");
-        Cookie ce = new Cookie("ce", email);
-        Cookie cp = new Cookie("cp", pass);
-        Cookie cr = new Cookie("cr", remember);
-        if (remember != null) {//remember me is selected
-            ce.setMaxAge(Integer.MAX_VALUE); //any max age
-            cp.setMaxAge(Integer.MAX_VALUE);
-            cr.setMaxAge(Integer.MAX_VALUE);
-        } else {
-            ce.setMaxAge(0); //instant discard
-            cp.setMaxAge(0);
-            cr.setMaxAge(0);
-        }
-        response.addCookie(ce);
-        response.addCookie(cp);
-        response.addCookie(cr);
+        HttpSession session = request.getSession();
+        User u = ((User) session.getAttribute("loggedUser"));
+
+        FoodDAO fd = new FoodDAO();
+        OrderDAO od = new OrderDAO();
         UserDAO ud = new UserDAO();
-        User u = ud.getUserByEmailAndPassword(email, pass);
-        if (u != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("loggedUser", u);
-            response.sendRedirect("index.jsp");
+        List<Food> list = fd.getFoods();
+        Cookie[] arr = request.getCookies();
+        String cartinfo = "";
+        if (arr != null) {
+            for (Cookie o : arr) {
+                if (o.getName().equals("cartinfo" + u.getId())) {
+                    cartinfo += o.getValue();
+                }
+            }
+        }
+        Order o = new Order(cartinfo, list);
+        o.setAddress(request.getParameter("coaddress"));
+
+        request.setAttribute("checkoutcart", o);
+        if (u == null) {
+            response.sendRedirect("login");
         } else {
-            request.setAttribute("error", "Incorrect email or password!");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            od.addOrder(u, o);
+            Cookie c = new Cookie("cartinfo" + u.getId(), "");
+            c.setMaxAge(0);
+            response.addCookie(c);
+            u.setBalance(ud.getBalance(u.getId()));
+            session.setAttribute("totalcart", 0);
+            session.setAttribute("loggedUser", u);
+            request.getRequestDispatcher("complete.jsp").forward(request, response);
         }
     }
 
