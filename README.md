@@ -69,8 +69,9 @@
   * Order status
 - Front-end was not the main focus (about ~30%)
 - Steps to run project:
-  * Run database script "Database_Full.sql"
-  * Run project in NetBeans IDE
+  * Download all files this repository (Code > Download ZIP)
+  * Run database script "Database_Full.sql" (Database/Database_Full.sql)
+  * Run project in NetBeans IDE (Project Folder: (PRJ301)Assignment)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -80,17 +81,31 @@
 <!-- GETTING STARTED -->
 ### Home Page
 
-First, the home page, as with every other customer-visible page,
+#### Navigation Bar
+
+First, the home page, as with every other customer-visible page, contains a navigaton bar on top, with a logo, current customer's location, a search bar, and depending whether or not the customer is logged in, will display:
+* A login button if not
+* A profile-related function buttons
+* Depending on the customer's account's role (1 - admin, 0 - customer), the Admin Tools button: 
+  * 1 > is shown
+  * 0 > Not shown
+ 
+#### Database Interaction
+
+There are several sections where
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Accounts System
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+If the user does not have an account, they can register when they click on the "Login" button. Otherwise, the user can log into the site and use its services.
+
+A "Remember Me" option will save the latest log in information to cookies and retrieve them so that the user won't have to re-enter.
+
+There are pages and functionalities that are restricted if the user is not logged in.
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Ordering Procedure
 
