@@ -1,5 +1,7 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
+
+# !!! WIP !!!
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -44,9 +46,21 @@
     <li><a href="#main-content">Main Content</a></li>
     <ul>
         <li><a href="#home-page">Home Page</a></li>
+          <ul>
+          <li><a href="#navigation-bar">Navigation Bar</a></li>
+          <li><a href="#database-interaction">Database Interaction</a></li>
+          </ul>
         <li><a href="#accounts-system">Accounts System</a></li>
+          <ul>
+          <li><a href="#registering">Registering</a></li>
+          <li><a href="#logging-in">Logging In</a></li>
+          </ul>
         <li><a href="#ordering-procedure">Ordering Procedure</a></li>
-        <li><a href="#orders-history">Orders History</a></li>
+          <ul>
+          <li><a href="#browsing">Browsing</a></li>
+          <li><a href="#cart-operations">Cart Operations</a></li>
+          <li><a href="#orders-history">Orders History</a></li>
+          </ul>
         <li><a href="#admin-tools">Admin Tools</a></li>
       <ul>
         <li><a href="#dashboard">Dashboard</a></li>
@@ -62,16 +76,17 @@
 
 <!-- ABOUT THE PROJECT -->
 ## Important Notes
+- Steps to run project:
+  * Download all files this repository (Code > Download ZIP)
+  * Run database script "Database_Full.sql" (Database/Database_Full.sql)
+  * Run project in NetBeans IDE (Project Folder: (PRJ301)Assignment)
 - Unimplemented features which should be ignored:
   * Operations regarding Restaurant table and object
   * Searching functionality
   * Location functionality
   * Order status
+  * User's balance top-up
 - Front-end was not the main focus (about ~30%)
-- Steps to run project:
-  * Download all files this repository (Code > Download ZIP)
-  * Run database script "Database_Full.sql" (Database/Database_Full.sql)
-  * Run project in NetBeans IDE (Project Folder: (PRJ301)Assignment)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -80,6 +95,8 @@
 ## Main Content
 <!-- GETTING STARTED -->
 ### Home Page
+
+<img src="Screenshots/index1.png"/>
 
 #### Navigation Bar
 
@@ -92,45 +109,47 @@ First, the home page, as with every other customer-visible page, contains a navi
  
 #### Database Interaction
 
-There are several sections where
+There are several sections where loading data from database is required for display, for example:
+
+This section displays items gathered whose value in "sold" column in table "Food" surpass a certain value:
+
+<img src="Screenshots/index2.png"/>
+
+This section displays half the items gathered from the table "Food" in the database:
+
+<img src="Screenshots/index2.png"/>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Accounts System
+## Accounts System
+
+### Registering
+
 If the user does not have an account, they can register when they click on the "Login" button. Otherwise, the user can log into the site and use its services.
+
+The new account cannot be duplicates of the following parameters: email and username.
+
+Default values: role = 0 (Customer), balance = 0.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+### Logging in
 
 A "Remember Me" option will save the latest log in information to cookies and retrieve them so that the user won't have to re-enter.
 
 There are pages and functionalities that are restricted if the user is not logged in.
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Ordering Procedure
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- USAGE EXAMPLES -->
-### Ordering Procedure
+## Ordering Procedure
+
+### Browsing
+### Cart Operations
+### Checking Out
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
@@ -196,7 +215,7 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Manage Accounts
+### Manage Accounts
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
@@ -212,7 +231,7 @@ Use this space to list resources you find helpful and would like to give credit 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
-## Manage Orders History
+### Manage Orders History
 
 Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
 
