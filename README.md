@@ -1,7 +1,6 @@
-![image](https://github.com/AnhNQ-FPT/PRJ301_Assignment/assets/163736413/01dcffd1-4c72-4974-a2d3-55d3c91d4c82)<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 
-# !!! WIP !!!
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -147,7 +146,7 @@ This section displays items gathered whose value in "sold" column in table "Food
 
 This section displays half the items gathered from the table "Food" in the database:
 
-<img src="Screenshots/index2.png"/>
+<img src="Screenshots/index3.png"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -254,6 +253,8 @@ The user can then press on "Details" to view the details of a specific order.
 
 If the currently logged in user has the role of an Admin (stored as bit value 1 in the database), they can access admin tools by clicking on "Admin Dashboard" hidden under "Admin Tools" button.
 
+<img src="Screenshots/admin-tools.png"/>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -262,6 +263,8 @@ If the currently logged in user has the role of an Admin (stored as bit value 1 
 #### Dashboard
 
 The dashboard will display information with regards to the connected database. Proper calculations are used.
+
+<img src="Screenshots/admin-dashboard.png"/>
 
 The "Details" button will take the user to the "Orders History" tab, which will be explained in details below.
 
@@ -274,13 +277,23 @@ The "Details" button will take the user to the "Orders History" tab, which will 
 
 This is where the admin can check on all the available items, add a new one, and update or delete existing ones. All operations should generate a message to let the admin know if the operation succeeded or failed and why.
 
+<img src="Screenshots/admin-foods.png"/>
+
 When the admin clicks on the plus sign next to the table title, a window will open up and the admin can enter new information for a new item.
+
+<img src="Screenshots/admin-foods-add.png"/>
 
 The "Update" button will take the admin to a different page to give new values to an existing item.
 
+<img src="Screenshots/admin-foods-update.png"/>
+
 Note: the Restaurant feature is not yet implemented fully so it is advisable to ignore this option.
 
-The "Delete" button will simply remove an item from the list.
+The "Delete" button will simply remove an item from the list. Here, item with ID 20 was deleted.
+
+<img src="Screenshots/admin-foods-delete.png"/>
+
+<img src="Screenshots/admin-foods-delete-20.png"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -291,6 +304,8 @@ The "Delete" button will simply remove an item from the list.
 
 Please refer to the "Foods Management" section as most operations here are similar to those there. 
 
+<img src="Screenshots/admin-accounts.png"/>
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
@@ -299,6 +314,10 @@ Please refer to the "Foods Management" section as most operations here are simil
 This section is similar to that in the user's menu, but you can view all orders by all users instead. Of course, each order is always set when it is placed so there won't be an "Update" button.
 
 Clicking on the "Details" button will take the admin to the page where details of the corresponding order is displayed.
+
+<img src="Screenshots/admin-orders-history.png"/>
+
+<img src="Screenshots/admin-orders-history-details.png"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
