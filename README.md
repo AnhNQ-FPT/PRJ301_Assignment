@@ -1,4 +1,4 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+![image](https://github.com/AnhNQ-FPT/PRJ301_Assignment/assets/163736413/8209a2a9-e9c0-4b5c-9b57-92121845fbcf)![image](https://github.com/AnhNQ-FPT/PRJ301_Assignment/assets/163736413/429c5b96-1ace-4bda-a126-47037b3559c5)![image](https://github.com/AnhNQ-FPT/PRJ301_Assignment/assets/163736413/c83e5925-f497-4002-a77c-3157c71038ce)<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 
 # !!! WIP !!!
@@ -95,13 +95,15 @@
     * Orders history
   * Admin tools
     * Dashboard
-    * Object management
+    * Objects management
 - Unimplemented features which should be ignored:
   * Operations regarding Restaurant table and object
+  * Operations regarding City table and object
   * Searching functionality
   * Location functionality
   * Order status
   * User's balance top-up
+  * Forgot password
 - Front-end was not the main focus (about ~30%)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -119,11 +121,11 @@
 #### Navigation Bar
 
 First, the home page, as with every other customer-visible page, contains a navigaton bar on top, with a logo, current customer's location, a search bar, and depending whether or not the customer is logged in, will display:
-* A login button if not
-* A profile-related function buttons
-* Depending on the customer's account's role (1 - admin, 0 - customer), the Admin Tools button: 
-  * 1 > is shown
-  * 0 > Not shown
+* A login button if not.
+* A profile-related function buttons otherwise.
+* Depending on the customer's account's role (1 - admin, 0 - customer), the "Admin Tools" button is: 
+  * 1 > shown.
+  * 0 > hidden.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
  
@@ -145,13 +147,21 @@ This section displays half the items gathered from the table "Food" in the datab
 
 There are pages and functionalities that are restricted if the user is not logged in.
 
+<img src="Screenshots/add-to-cart-not-logged-in.png"/>
+
 When the user clicks on the "Login" button on the navigation bar or "log in" when they try to add an item to cart, they will be rerdirected to the login page.
+
+<img src="Screenshots/login-page.png"/>
 
 #### Registering
 
 If the user does not have an account, they can register a new one by clicking on the "Register" button. A register window will appear. 
 
+<img src="Screenshots/register.png"/>
+
 The new account cannot be duplicates of the following parameters: email and username.
+
+<img src="Screenshots/dupe-username.png"/>
 
 Default values: role = 0 (Customer), balance = 0.
 
@@ -159,7 +169,9 @@ Default values: role = 0 (Customer), balance = 0.
 
 #### Logging in
 
-The user can log in with their registered account. A "Remember Me" option will save the latest log in information to cookies and retrieve them so that the user won't have to re-enter.
+The user can log in with their registered account. A "Remember Me" option will save the latest log in information to cookies and retrieve it so that the user won't have to re-enter it.
+
+<img src="Screenshots/login-remember-me.png"/>
 
 And now the user can use our services.
 
@@ -170,17 +182,29 @@ And now the user can use our services.
 
 #### Browsing
 
-The user can click on many different elements on the homepage, which will take them to the catalogue page where they can browse through all available items.
+The user can click on many different elements on the homepage, which will take them to the catalogue page where they can browse through all available items. Click "Expand" to reveal the full list.
 
-When the user click on an item, be it in the home page or the catalogue page, a separate page will show up so that the user can view the item's details and decide the number of that item to add to cart (once again, this activity is prohibited if the user is not logged in). 
+<img src="Screenshots/catalogue.png"/>
+
+When the user click on an item, be it in the home page or the catalogue page, a separate page will show up so that the user can view the item's details and decide the number of that item to add to cart (once again, this activity is prohibited if the user is not logged in).
+
+<img src="Screenshots/add-to-cart-logged-in.png"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 #### Cart Operations
 
-When the user presses "Add To Cart" button, the corresponding item and its quantity will be added to cart. They can then view their cart's details by clicking on "View Cart" under their profile button.
+When the user presses "Add To Cart" button, the corresponding item and its quantity will be added to cart. The user will be notified.
+
+<img src="Screenshots/added-to-cart.png"/>
+
+User can then view their cart's details by clicking on "View Cart" under their profile button. 
+
+<img src="Screenshots/profile-buttons.png"/>
 
 In this page, the details of each item are displayed. The user has the option to proceed to checkout or return to home page.
+
+<img src="Screenshots/view-cart.png"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -188,7 +212,11 @@ In this page, the details of each item are displayed. The user has the option to
 
 When the user clicks on "Check Out" from the previous page, they will be directed to a page where the total of their cart and their account balance will be shown. The user then enters an address to ship the order to.
 
-Finally, user clicks "Check Out" to complete their purchase, and their order will be saved in order history.
+<img src="Screenshots/checkout.png"/>
+
+Finally, user clicks "Check Out" to complete their purchase, and their order will be saved in order history. A confirmation page is displayed. "Return home" take the user to the home page, and "continue browsing" takes the user to the catalogue page.
+
+<img src="Screenshots/checkout-complete.png"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -199,9 +227,15 @@ Finally, user clicks "Check Out" to complete their purchase, and their order wil
 
 The user can view their past orders by clicking on "Orders History" hidden under their profile button.
 
+<img src="Screenshots/profile-buttons.png"/>
+
 All past orders made by the currently logged in user will be shown with general information.
 
+<img src="Screenshots/orders-history.png"/>
+
 The user can then press on "Details" to view the details of a specific order.
+
+<img src="Screenshots/orders-history-details.png"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
