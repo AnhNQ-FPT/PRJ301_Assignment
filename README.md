@@ -30,7 +30,7 @@
   <h1 align="center">PRJ301 - Final Project</h1>
 
   <p align="center">
-    Food Ordering website
+    Food Ordering Website
     <br />
     <br />
   </p>
@@ -50,7 +50,7 @@
           <li><a href="#navigation-bar">Navigation Bar</a></li>
           <li><a href="#database-interaction">Database Interaction</a></li>
           </ul>
-        <li><a href="#accounts-system">Accounts System</a></li>
+        <li><a href="#account-system">Account System</a></li>
           <ul>
           <li><a href="#registering">Registering</a></li>
           <li><a href="#logging-in">Logging In</a></li>
@@ -64,9 +64,9 @@
         <li><a href="#admin-tools">Admin Tools</a></li>
       <ul>
         <li><a href="#dashboard">Dashboard</a></li>
-        <li><a href="#manage-foods">Manage Foods</a></li>
-        <li><a href="#manage-accounts">Manage Accounts</a></li>
-        <li><a href="#manage-orders-history">Manage Orders History</a></li>
+        <li><a href="#foods-management">Foods Management</a></li>
+        <li><a href="#accounts-management">Accounts Management</a></li>
+        <li><a href="#orders-history-management">Orders History Management</a></li>
       </ul>
     </ul>
   </ol>
@@ -80,6 +80,22 @@
   * Download all files this repository (Code > Download ZIP)
   * Run database script "Database_Full.sql" (Database/Database_Full.sql)
   * Run project in NetBeans IDE (Project Folder: (PRJ301)Assignment)
+- Implemented features:
+  * Home Page
+    * Navigation bar
+    * Database interaction
+  * Account system
+    * Registering
+    * Logging in
+    * Role division
+  * Ordering
+    * Browsing catalogue
+    * Cart operations (adding, removing, incrementing etc.)
+    * Checking out
+    * Orders history
+  * Admin tools
+    * Dashboard
+    * Object management
 - Unimplemented features which should be ignored:
   * Operations regarding Restaurant table and object
   * Searching functionality
@@ -98,6 +114,8 @@
 
 <img src="Screenshots/index1.png"/>
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 #### Navigation Bar
 
 First, the home page, as with every other customer-visible page, contains a navigaton bar on top, with a logo, current customer's location, a search bar, and depending whether or not the customer is logged in, will display:
@@ -106,6 +124,8 @@ First, the home page, as with every other customer-visible page, contains a navi
 * Depending on the customer's account's role (1 - admin, 0 - customer), the Admin Tools button: 
   * 1 > is shown
   * 0 > Not shown
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
  
 #### Database Interaction
 
@@ -119,14 +139,17 @@ This section displays half the items gathered from the table "Food" in the datab
 
 <img src="Screenshots/index2.png"/>
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Accounts System
+### Account System
 
-### Registering
+There are pages and functionalities that are restricted if the user is not logged in.
 
-If the user does not have an account, they can register when they click on the "Login" button. Otherwise, the user can log into the site and use its services.
+When the user clicks on the "Login" button on the navigation bar or "log in" when they try to add an item to cart, they will be rerdirected to the login page.
+
+#### Registering
+
+If the user does not have an account, they can register a new one by clicking on the "Register" button. A register window will appear. 
 
 The new account cannot be duplicates of the following parameters: email and username.
 
@@ -134,148 +157,116 @@ Default values: role = 0 (Customer), balance = 0.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Logging in
+#### Logging in
 
-A "Remember Me" option will save the latest log in information to cookies and retrieve them so that the user won't have to re-enter.
+The user can log in with their registered account. A "Remember Me" option will save the latest log in information to cookies and retrieve them so that the user won't have to re-enter.
 
-There are pages and functionalities that are restricted if the user is not logged in.
+And now the user can use our services.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- USAGE EXAMPLES -->
-## Ordering Procedure
+### Ordering Procedure
 
-### Browsing
-### Cart Operations
-### Checking Out
+#### Browsing
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+The user can click on many different elements on the homepage, which will take them to the catalogue page where they can browse through all available items.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+When the user click on an item, be it in the home page or the catalogue page, a separate page will show up so that the user can view the item's details and decide the number of that item to add to cart (once again, this activity is prohibited if the user is not logged in). 
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+#### Cart Operations
+
+When the user presses "Add To Cart" button, the corresponding item and its quantity will be added to cart. They can then view their cart's details by clicking on "View Cart" under their profile button.
+
+In this page, the details of each item are displayed. The user has the option to proceed to checkout or return to home page.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+#### Checking Out
+
+When the user clicks on "Check Out" from the previous page, they will be directed to a page where the total of their cart and their account balance will be shown. The user then enters an address to ship the order to.
+
+Finally, user clicks "Check Out" to complete their purchase, and their order will be saved in order history.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- ROADMAP -->
-### Orders History
+#### Orders History
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+The user can view their past orders by clicking on "Orders History" hidden under their profile button.
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+All past orders made by the currently logged in user will be shown with general information.
+
+The user can then press on "Details" to view the details of a specific order.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- CONTRIBUTING -->
-## Admin Tools
+### Admin Tools
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+If the currently logged in user has the role of an Admin (stored as bit value 1 in the database), they can access admin tools by clicking on "Admin Dashboard" hidden under "Admin Tools" button.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- LICENSE -->
-### Dashboard
+#### Dashboard
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+The dashboard will display information with regards to the connected database. Proper calculations are used.
+
+The "Details" button will take the user to the "Orders History" tab, which will be explained in details below.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- CONTACT -->
-### Manage Foods
+#### Foods Management
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+This is where the admin can check on all the available items, add a new one, and update or delete existing ones. All operations should generate a message to let the admin know if the operation succeeded or failed and why.
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+When the admin clicks on the plus sign next to the table title, a window will open up and the admin can enter new information for a new item.
+
+The "Update" button will take the admin to a different page to give new values to an existing item.
+
+Note: the Restaurant feature is not yet implemented fully so it is advisable to ignore this option.
+
+The "Delete" button will simply remove an item from the list.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 <!-- ACKNOWLEDGMENTS -->
-### Manage Accounts
+#### Accounts Management
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+Please refer to the "Foods Management" section as most operations here are similar to those there. 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
-### Manage Orders History
+#### Orders History Management
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+This section is similar to that in the user's menu, but you can view all orders by all users instead. Of course, each order is always set when it is placed so there won't be an "Update" button.
 
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+Clicking on the "Details" button will take the admin to the page where details of the corresponding order is displayed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<div align="center">
 
+  <h1 align="center">Thank You For Your Time</h1>
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
-[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
-[Vue-url]: https://vuejs.org/
-[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
-[Angular-url]: https://angular.io/
-[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
-[Svelte-url]: https://svelte.dev/
-[Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
-[Laravel-url]: https://laravel.com
-[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[Bootstrap-url]: https://getbootstrap.com
-[JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com 
+  <p align="center">
+    by HE181459 Nguyen Quang Anh
+    <br />
+    <br />
+  </p>
+</div>
