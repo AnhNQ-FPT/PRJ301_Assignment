@@ -1,4 +1,4 @@
-![image](https://github.com/AnhNQ-FPT/PRJ301_Assignment/assets/163736413/8209a2a9-e9c0-4b5c-9b57-92121845fbcf)![image](https://github.com/AnhNQ-FPT/PRJ301_Assignment/assets/163736413/429c5b96-1ace-4bda-a126-47037b3559c5)![image](https://github.com/AnhNQ-FPT/PRJ301_Assignment/assets/163736413/c83e5925-f497-4002-a77c-3157c71038ce)<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+![image](https://github.com/AnhNQ-FPT/PRJ301_Assignment/assets/163736413/01dcffd1-4c72-4974-a2d3-55d3c91d4c82)<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 
 # !!! WIP !!!
@@ -122,10 +122,18 @@
 
 First, the home page, as with every other customer-visible page, contains a navigaton bar on top, with a logo, current customer's location, a search bar, and depending whether or not the customer is logged in, will display:
 * A login button if not.
-* A profile-related function buttons otherwise.
-* Depending on the customer's account's role (1 - admin, 0 - customer), the "Admin Tools" button is: 
+
+<img src="Screenshots/navbar-not-logged-in.png"/>
+
+* A profile-related function buttons otherwise, and, depending on the customer's account's role (1 - admin, 0 - customer), the "Admin Tools" button is: 
   * 1 > shown.
+
+<img src="Screenshots/navbar-logged-admin.png"/>
+
   * 0 > hidden.
+
+<img src="Screenshots/navbar-logged-customer.png"/>
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
  
